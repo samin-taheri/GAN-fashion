@@ -5,7 +5,7 @@ CPU-safe by default — runs anywhere.
 
 ---
 
-## 📦 Setup
+## Setup
 
 Create a virtual environment and install dependencies:
 
