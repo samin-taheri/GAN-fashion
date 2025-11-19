@@ -66,6 +66,7 @@ def main():
     optD = optim.Adam(D.parameters(), lr=args.lrD, betas=(args.beta1, 0.999))
     criterion = nn.BCELoss()
 
+    # Load dataset + Fixed noise
     loader = get_loader(args.batch_size)
     fixed_z = torch.randn(16, args.latent_dim, device=device)
 
@@ -74,6 +75,7 @@ def main():
     with open(log_path, "w", newline="") as f:
         csv.writer(f).writerow(["epoch", "lossD", "lossG"])
 
+    # Training loop
     for epoch in range(1, args.epochs + 1):
         G.train(); D.train()
         pbar = tqdm(loader, desc=f"Epoch {epoch}/{args.epochs}")

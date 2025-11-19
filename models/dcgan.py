@@ -1,6 +1,7 @@
 import torch.nn as nn
 
 # 28x28 → project to 7x7 then upsample 7→14→28
+# generator
 class GenDCGAN(nn.Module):
     def __init__(self, z_dim=100, ngf=64):
         super().__init__()
@@ -20,6 +21,7 @@ class GenDCGAN(nn.Module):
         x = self.fc(z).view(z.size(0), -1, 7, 7)
         return self.main(x)
 
+# discriminator
 class DiscDCGAN(nn.Module):
     def __init__(self, ndf=64):
         super().__init__()

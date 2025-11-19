@@ -1,5 +1,6 @@
 import torch.nn as nn
 
+# generator
 class GenMLP(nn.Module):
     def __init__(self, z_dim=100):
         super().__init__()
@@ -11,6 +12,7 @@ class GenMLP(nn.Module):
     def forward(self, z):
         return self.net(z).view(z.size(0), 1, 28, 28)
 
+# discriminator
 class DiscMLP(nn.Module):
     def __init__(self):
         super().__init__()
